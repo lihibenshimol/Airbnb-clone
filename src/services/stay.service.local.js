@@ -34,6 +34,7 @@ async function query(filterBy = { txt: '' }) {
 }
 
 function getById(stayId) {
+    console.log('stayOd = ', stayId)
     return storageService.get(STORAGE_KEY, stayId)
 }
 

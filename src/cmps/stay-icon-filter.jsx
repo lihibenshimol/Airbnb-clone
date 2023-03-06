@@ -2,20 +2,40 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { labels, stayServiceL } from "../services/stay.service.local"
-import { AiOutlineRight, AiOutlineLeft, AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
+import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
 
 
 export function StayIconFilter() {
     const [idx, setIdx] = useState(0)
-    const pageSize = 14
+    const [pageSize, setPageSize] = useState(14);
     const pageDiff = 4
     const startLabel = idx * pageDiff
     let labelsPage = labels.slice(startLabel, startLabel + pageSize)
 
+
     useEffect(() => {
-        labelsPage = labels.slice(startLabel, startLabel + pageSize)
-    }, [idx]
-    )
+        function handleResize() {
+            const screenWidth = window.innerWidth;
+            if (screenWidth >= 1200) {
+                setPageSize(16);
+            } else if (screenWidth >= 960) {
+                setPageSize(11);
+            } else if (screenWidth >= 720) {
+                setPageSize(10);
+            } else if (screenWidth >= 460) {
+                setPageSize(8);
+            } else {
+                setPageSize(6);
+            }
+            labelsPage = labels.slice(startLabel, startLabel + pageSize);
+        }
+
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [idx, pageSize]);
 
     function pagination(diff) {
         console.log('diff = ', diff)
@@ -31,7 +51,6 @@ export function StayIconFilter() {
             setIdx(idx)
         }
         setIdx(index)
-
     }
 
 

@@ -1,52 +1,52 @@
 .stay-icon-filter {
     display: flex;
-    gap: 30px;
+    gap: 25px;
+    border-radius: 10px;
+    background-color: white;
+    align-items: center;
     color: $filter-icons;
     padding: 0 40px;
-    font-family: circular;
+    font-family: circularL;
     position: relative;
-    width: 80%;
+    justify-content: center;
 
     .filter-icon-pagination {
-  
+        position: absolute;
+        display: flex;
+        align-self: center;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 7px;
+        font-size: 26px;
 
-        .icons-right {
-            display: block;
-            position: absolute;
-            /* width: 76px; */
+        @include for-mobile-layout {
+            display: none;
+        }
+
+        button {
+            background-color: rgba(255, 255, 255, 0.71);
+            border-radius: 50%;
+            border: #c3c3c3 1px solid;
             height: 56px;
-            width: 50px;
+            width: 56px;
             font-size: 28px;
-            right: -250px;
-            // left: -300px;
-            color: #a5a5a5;
-            top: 0px;
-            text-align: center;
-            background-color: rgb(255 255 255 / 24%);
+            box-shadow: 0px 0px 20px 30px rgb(255, 255, 255);
+            z-index: 100;
+
+            &.start,
+            &.end {
+                background-color: blue;
+            }
         }
 
         .icons-right.end {
-            display: none;
+            opacity: 0.00000000000001;
         }
 
         .icons-left.start{
-            display: none;
+            opacity: 0.00000000000001;
         }
-        
-        .icons-left {
-            display: block;
-            position: absolute;
-            /* width: 76px; */
-            height: 56px;
-            width: 50px;
-            font-size: 28px;
-           left: 35px;
-            color: #a5a5a5;
-            top: 0px;
-            text-align: center;
-            background-color: rgb(255 255 255 / 24%);
-           
-        }
+
     }
 
 
@@ -56,15 +56,17 @@
         flex-direction: column;
         align-items: center;
         gap: 3px;
-        min-width: 64px;
+        min-width: 70px;
         width: fit-content;
         text-align: center;
+        // padding: 30px;
 
 
         .filter-icon {
             fill: $filter-icons;
             height: 24px;
             width: 24px;
+            opacity: .6;
         }
     }
 }

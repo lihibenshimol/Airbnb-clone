@@ -4,6 +4,7 @@ import { loadStays, addStay, updateStay, removeStay } from '../store/stay.action
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { stayService } from '../services/stay.service.js'
+import { StayList } from '../cmps/stay-list.jsx'
 
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
@@ -50,21 +51,11 @@ export function StayIndex() {
 
     return (
         <div>
-            <h3>Stays App</h3>
+          
             <main>
-                <button onClick={onAddStay}>Add Stay ⛐</button>
-                <ul className="stay-list">
-                    {stays.map(stay =>
-                        <li className="stay-preview" key={stay._id}>
-                          <h1>{stay.name}</h1>
-                            <div>
-                                <button onClick={() => { onRemoveStay(stay._id) }}>x</button>
-                                <button onClick={() => { onUpdateStay(stay) }}>Edit</button>
-                            </div>
 
-                        </li>)
-                    }
-                </ul>
+                {stays && <StayList stays={stays}/>}
+               
             </main>
         </div>
     )

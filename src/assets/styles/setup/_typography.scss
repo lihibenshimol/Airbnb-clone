@@ -1,12 +1,23 @@
 @font-face {
     font-family: circular;
-    src: url(../fonts/circular/CircularStd-Medium.otf);
+    src: url(../fonts/circular/CircularStd-Black.otf);
 }
+
 @font-face {
-    font-family: circular-light;
+    font-family: circularH;
+    src: url(../fonts/circular/CircularStd-Book.otf);
+}
+
+@font-face {
+    font-family: circularL;
     src: url(../fonts/circular/CircularStd-Light.otf);
 }
+
 @font-face {
-    font-family: airbnb;
+    font-family: CerealBd;
     src: url(../fonts/circular/AirbnbCereal_W_Bd.otf);
+}
+@font-face {
+    font-family: circuarlUser;
+    src: url(../fonts/circular/CircularStd-Bold.otf);
 }
