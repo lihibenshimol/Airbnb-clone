@@ -1,6 +1,7 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { VscGlobe } from 'react-icons/vsc'
+import { RxHamburgerMenu } from 'react-icons/rx'
 import routes from '../routes'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
@@ -11,10 +12,14 @@ import logo from '../assets/img/img/logo.png'
 import search from '../assets/img/img/icons/search.svg'
 import { StayFilter } from './stay-filter'
 import IconBxsUserCircle from '../assets/img/img/icons/avatar'
+import { useState } from 'react'
+import { LoginMenu } from './login-menu'
 // import {Avater } from
 
 export function AppHeader() {
+    const navigate = useNavigate()
     const user = useSelector(storeState => storeState.userModule.user)
+    const [loginMenu, toggleLoginMenu] = useState(false)
 
     async function onLogin(credentials) {
         try {
@@ -42,34 +47,35 @@ export function AppHeader() {
     }
 
     return (
-        <header className="app-header full">
+        <header className="full">
 
-            <div className='top-row'>
-                <section className='logo-container'>
-                    <img src={logo} alt="logo" className='logo' />
-                    <p className='logo-name'>staybnb</p>
-                </section>
-
-               <StayFilter />
-
-                <section className='user-info'>
-                    <p>Become a host!</p>
-                    <p className='lang-container'> <VscGlobe className='lang'/></p>
-                   <p className='avatar-container'> <IconBxsUserCircle className='avatar' /> </p>
-
-                </section>
-
-                
+            <section id='header' className='app-header main-container'>
+                <div className='top-row'>
+                    <section onClick={() => navigate('/')} className='logo-container'>
+                        <img src={logo} alt="logo" className='logo' />
+                        <p className='logo-name'>staybnb</p>
+                    </section>
 
 
-            </div>
+                    <StayFilter />
 
+                    <section className='user-info'>
+                        <p>Become a host!</p>
+                        <p className='lang-container'> <VscGlobe className='lang' /></p>
+                        <p onClick={() => toggleLoginMenu(!loginMenu)} className='avatar-container'>
+                            <RxHamburgerMenu className='menu' />
+                            <IconBxsUserCircle className='avatar' />
 
-            <div className='bottom-row'>
+                        </p>
 
-                <StayIconFilter />
+                    </section>
 
-            </div>
+                </div>
+
+            </section>
+                    
+
+        {loginMenu && <LoginMenu />}
         </header>
     )
 }

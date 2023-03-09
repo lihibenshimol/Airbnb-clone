@@ -5,6 +5,8 @@ import { loadStays, addStay, updateStay, removeStay } from '../store/stay.action
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { stayService } from '../services/stay.service.js'
 import { StayList } from '../cmps/stay-list.jsx'
+import { AppHeader } from '../cmps/app-header.jsx'
+import { StayIconFilter } from '../cmps/stay-icon-filter.jsx'
 
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
@@ -50,9 +52,10 @@ export function StayIndex() {
     }
 
     return (
-        <div>
-          
-            <main>
+        <div >
+             <AppHeader />
+             <StayIconFilter />
+            <main className='main-container'>
 
                 {stays && <StayList stays={stays}/>}
                

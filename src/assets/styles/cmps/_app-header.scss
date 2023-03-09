@@ -1,9 +1,11 @@
+
+
 .app-header {
     position: sticky;
     top: 0;
     background-color: white;
     z-index: 100;
-    padding: 0 40px;
+    // padding: 0 40px;
 
     .top-row {
         display: flex;
@@ -19,12 +21,17 @@
             align-items: center;
             gap: 7px;
             font-family: cerealBD;
+            cursor: pointer;
 
             .logo-name {
                 display: block;
                 font-size: 1.3em;
                 color: $logo;
                 padding-right: 120px;
+
+                @media (max-width: 1128px) {
+                   display: none;
+                }
             }
 
             .logo {
@@ -36,6 +43,11 @@
         .search-icon {
             color: white;
         }
+    }
+
+    hr {
+       border: .1px solid #c3c3c331;
+       padding: 0;
     }
 
 
@@ -53,11 +65,27 @@
         }
 
         .avatar-container {
-            padding: 12px;
+            padding: 2px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            border: 1px solid #c3c3c3b4;
+            border-radius: 20px;
+            transition: .4s;
+            position: relative;
+
+            &:hover {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+            }
 
             .avatar {
-                height: 30px;
-                width: 30px;
+                height: 35px;
+                width: 35px;
+            }
+
+            .menu {
+                font-size: 18px;
             }
         }
 
@@ -75,12 +103,13 @@
     }
 
 
-    .bottom-row {
-        display: flex;
-        align-items: end;
-        min-height: 80px;
-        justify-content: start;
-        // margin-top: 20px;
-    }
+    // .bottom-row {
+    //     // display: flex;
+    //     // align-items: end;
+    //     // // max-height: 80px;
+    //     // // min-height: 80px;
+    //     // justify-content: start;
+    //     // margin-top: 20px;
+    // }
 
 }

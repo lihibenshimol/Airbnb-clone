@@ -21,6 +21,33 @@ a {
             aspect-ratio: 1.0550819672/1;
         }
 
+        .dots {
+            position: absolute;
+            display: flex;
+            left: 43%;
+            bottom: em(110px);
+            gap: em(5px);
+        }
+
+        .dot {
+            cursor: pointer;
+            width: 7px;
+            height: 7px;
+            background-color: #a8a7a0;
+            border-radius: 50%;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: white;
+                scale: 1.01;
+            }
+        }
+
+        .dot-active {
+            background-color: white;
+            scale: 1.01;
+        }
+
     }
 
     .slider-btn {
@@ -31,7 +58,7 @@ a {
         padding: 0 5px;
         top: 32%;
         transition: .5s;
-        z-index: 999;
+        // z-index: 999;
 
         button {
             border-radius: 20px;
@@ -46,8 +73,17 @@ a {
             &:hover {
                 opacity: 1;
             }
-
         }
+
+
+        .arrow-left.hide {
+            opacity: 0;
+        }
+
+        .arrow-right.hide {
+            opacity: 0;
+        }
+    
     }
 
     .details {
@@ -90,4 +126,7 @@ a {
 
 
     }
+
+
+
 }

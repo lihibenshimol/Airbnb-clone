@@ -1,53 +1,64 @@
 .stay-icon-filter {
-    display: flex;
-    gap: 25px;
-    border-radius: 10px;
-    background-color: white;
     align-items: center;
-    color: $filter-icons;
-    padding: 0 40px;
-    font-family: circularL;
+    padding-top: 1.5rem;
     position: relative;
-    justify-content: center;
+    // display: flex;
+    margin: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 140px;
+    z-index: 3;
+    background-color: white;
 
-    .filter-icon-pagination {
-        position: absolute;
+    .filter-slider {
+        align-items: center;
         display: flex;
-        align-self: center;
-        width: 100%;
-        justify-content: space-between;
-        margin-bottom: 7px;
-        font-size: 26px;
+        font-size: 12px;
+        gap: 1.8rem;
+        overflow-y: auto;
+        white-space: nowrap;
+        position: relative;
+        scroll-behavior: smooth;
+        font-family: circularL;
+        // z-index: 3;
 
-        @include for-mobile-layout {
+        &::-webkit-scrollbar {
             display: none;
         }
-
-        button {
-            background-color: rgba(255, 255, 255, 0.71);
-            border-radius: 50%;
-            border: #c3c3c3 1px solid;
-            height: 56px;
-            width: 56px;
-            font-size: 28px;
-            box-shadow: 0px 0px 20px 30px rgb(255, 255, 255);
-            z-index: 100;
-
-            &.start,
-            &.end {
-                background-color: blue;
-            }
-        }
-
-        .icons-right.end {
-            opacity: 0.00000000000001;
-        }
-
-        .icons-left.start{
-            opacity: 0.00000000000001;
-        }
-
     }
+
+  
+        .left-container {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.31);
+            width: 50px;
+            height: 65px;
+            z-index: 3;
+            display: flex;
+            // left: -10px;
+            align-items: center;
+        }
+        
+        .right-container {
+            
+            background-color: rgba(255, 255, 255, 0.284);
+            width: 50px;
+            height: 65px;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            right: 0;
+        }
+        
+        .arrow {
+            background: white;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border-radius: 50%;
+            
+        }
+
 
 
     .filter-btn {
@@ -60,6 +71,14 @@
         width: fit-content;
         text-align: center;
         // padding: 30px;
+        color: #717171;
+        font-family: circularH;
+        padding-bottom: 10px;
+
+        &:hover {
+            color: black;
+            border-bottom: $filter-icons 2px solid;
+        }
 
 
         .filter-icon {
@@ -67,6 +86,10 @@
             height: 24px;
             width: 24px;
             opacity: .6;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }

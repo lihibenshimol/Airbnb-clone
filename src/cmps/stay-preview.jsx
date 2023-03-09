@@ -7,13 +7,24 @@ export function StayPreview({ stay }) {
 
 
     function fixIdxForImages(diff) {
-
+        // const arrowRight = document.getElementById('arrow-right')
+        // const arrowLeft = document.getElementById('arrow-left')
         idx += diff
+        // if (idx !== stay.imgUrls.length - 1 && idx !== -1) {
+        //     arrowLeft.classList.remove('hide')
+        //     arrowRight.classList.remove('hide')
+        // }
         if (idx > stay.imgUrls.length - 1) {
-            idx = 0
+            // arrowRight.classList.add('hide')
+            // arrowLeft.classList.remove('hide')
+            idx=0
+            
         } else if (idx === -1) {
+            // arrowRight.classList.remove('hide')
+            // arrowLeft.classList.add('hide')
             idx = stay.imgUrls.length - 1
-        }
+        } 
+
         setIdx(idx)
     }
 
@@ -37,8 +48,11 @@ export function StayPreview({ stay }) {
                     <img src={stay.imgUrls[idx]} alt="" />
                 </Link>
                 <div className="slider-btn flex">
-                    <button onClick={() => fixIdxForImages(-1)}><AiOutlineLeft /></button>
-                    <button onClick={() => fixIdxForImages(1)}><AiOutlineRight /></button>
+                    <button id='arrow-left' className='arrow-left ' onClick={() => fixIdxForImages(-1)}><AiOutlineLeft /></button>
+                    <button id='arrow-right' className='arrow-right' onClick={() => fixIdxForImages(1)}><AiOutlineRight /></button>
+                </div>
+                <div className="dots">
+                    {stay.imgUrls.map((url, index) => <div onClick={() => setIdx(index)} key={url} className={`dot ${idx === index ? 'dot-active' : ''}`}></div>)}
                 </div>
             </div>
             <Link to={`/stay/${stay._id}`}>
